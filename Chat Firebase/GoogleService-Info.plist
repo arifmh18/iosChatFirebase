@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>619941346560-8p7g54150u6tleuv6d57do237m7g21ku.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.619941346560-8p7g54150u6tleuv6d57do237m7g21ku</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCI6L1ff2BdRRiO_-ghFiYKX-58iOGD2Bk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>619941346560</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Algostudio.Chat-Firebase</string>
+	<key>PROJECT_ID</key>
+	<string>ios-project-8fed6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ios-project-8fed6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:619941346560:ios:bbdf3c7937f31fdccac7e5</string>
+	<key>DATABASE_URL</key>
+	<string>https://ios-project-8fed6.firebaseio.com</string>
+</dict>
+</plist>

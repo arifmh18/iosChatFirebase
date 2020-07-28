@@ -24,4 +24,8 @@ class ChatCell: UITableViewCell {
 
     }
     
+    func setData(data: ListChatModel){
+        self.cell_userName.text = data.sender
+        self.cell_lastMessage.text = data.text
+    }
 }
