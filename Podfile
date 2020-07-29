@@ -5,16 +5,10 @@ target 'Chat Firebase' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-	pod 'MessageKit'
-	pod 'Firebase/Core'
-	pod 'Firebase/Auth'
-	pod 'Firebase/Database'
-	pod 'Firebase/Analytics'
-	pod 'GoogleSignIn'
-
-	pod 'JGProgressHUD'
-	pod 'RealmSwift'
-	pod 'SDWebImage'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
   # Pods for Chat Firebase
 

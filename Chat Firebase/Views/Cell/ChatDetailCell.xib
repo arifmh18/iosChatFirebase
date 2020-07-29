@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ChatDetailCell" customModule="Chat_Firebase" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="488" height="188"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="488" height="188"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzr-a2-vdz">
+                        <rect key="frame" x="0.0" y="0.0" width="488" height="188"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcm-dT-LFt">
+                                <rect key="frame" x="4" y="4" width="480" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BwQ-gU-Cnf">
+                                <rect key="frame" x="4" y="25" width="300" height="159"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEQ-8v-rUd">
+                                        <rect key="frame" x="4" y="4" width="292" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s33-W9-UHR">
+                                        <rect key="frame" x="8" y="143" width="284" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="s33-W9-UHR" firstAttribute="leading" secondItem="BwQ-gU-Cnf" secondAttribute="leading" constant="8" id="7SK-v4-gbc"/>
+                                    <constraint firstAttribute="width" constant="300" id="8dc-1X-Lgt"/>
+                                    <constraint firstItem="GEQ-8v-rUd" firstAttribute="top" secondItem="BwQ-gU-Cnf" secondAttribute="top" constant="4" id="L2M-LQ-6fK"/>
+                                    <constraint firstAttribute="bottom" secondItem="s33-W9-UHR" secondAttribute="bottom" constant="4" id="SWr-Te-HEI"/>
+                                    <constraint firstItem="GEQ-8v-rUd" firstAttribute="leading" secondItem="BwQ-gU-Cnf" secondAttribute="leading" constant="4" id="ben-rG-f3v"/>
+                                    <constraint firstAttribute="trailing" secondItem="GEQ-8v-rUd" secondAttribute="trailing" constant="4" id="mz5-gh-TBO"/>
+                                    <constraint firstAttribute="trailing" secondItem="s33-W9-UHR" secondAttribute="trailing" constant="8" id="pYa-B1-B2b"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="fcm-dT-LFt" firstAttribute="leading" secondItem="vzr-a2-vdz" secondAttribute="leading" constant="4" id="6u3-iB-72g"/>
+                            <constraint firstItem="fcm-dT-LFt" firstAttribute="top" secondItem="vzr-a2-vdz" secondAttribute="top" constant="4" id="AC7-bL-tGv"/>
+                            <constraint firstItem="BwQ-gU-Cnf" firstAttribute="top" secondItem="fcm-dT-LFt" secondAttribute="bottom" constant="4" id="CGo-tx-rwp"/>
+                            <constraint firstItem="BwQ-gU-Cnf" firstAttribute="leading" secondItem="vzr-a2-vdz" secondAttribute="leading" constant="4" id="Rzm-1z-ToQ"/>
+                            <constraint firstAttribute="trailing" secondItem="fcm-dT-LFt" secondAttribute="trailing" constant="4" id="l2P-Mw-ihy"/>
+                            <constraint firstAttribute="bottom" secondItem="BwQ-gU-Cnf" secondAttribute="bottom" constant="4" id="spT-dV-1Ra"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="vzr-a2-vdz" secondAttribute="bottom" id="1ZM-Zl-RVJ"/>
+                <constraint firstItem="vzr-a2-vdz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="JzP-Ox-4Ko"/>
+                <constraint firstAttribute="trailing" secondItem="vzr-a2-vdz" secondAttribute="trailing" id="TtR-bP-XVo"/>
+                <constraint firstItem="vzr-a2-vdz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tx7-xz-1wa"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="488" height="188"/>
+            <connections>
+                <outlet property="chat_text" destination="GEQ-8v-rUd" id="IdO-ga-W4l"/>
+                <outlet property="chat_time" destination="s33-W9-UHR" id="QGo-px-CLg"/>
+                <outlet property="chat_username" destination="fcm-dT-LFt" id="mS7-or-ny1"/>
+            </connections>
+            <point key="canvasLocation" x="455.07246376811599" y="164.73214285714286"/>
+        </collectionViewCell>
+    </objects>
+</document>

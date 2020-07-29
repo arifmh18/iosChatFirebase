@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="se7-VX-0S9" customClass="ChatDetailCell" customModule="Chat_Firebase" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="479" height="162"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HOM-wa-tp6">
+                <rect key="frame" x="0.0" y="0.0" width="479" height="162"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHe-AG-CDA">
+                        <rect key="frame" x="0.0" y="0.0" width="479" height="162"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUU-51-KuS">
+                                <rect key="frame" x="4" y="4" width="471" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTE-AZ-ryc">
+                                <rect key="frame" x="175" y="25" width="300" height="133"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwm-7G-PcJ">
+                                        <rect key="frame" x="4" y="4" width="292" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9d-Te-fjf">
+                                        <rect key="frame" x="8" y="117" width="284" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Jwm-7G-PcJ" firstAttribute="leading" secondItem="xTE-AZ-ryc" secondAttribute="leading" constant="4" id="A55-9P-LFH"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jwm-7G-PcJ" secondAttribute="trailing" constant="4" id="LOh-gh-SKp"/>
+                                    <constraint firstItem="T9d-Te-fjf" firstAttribute="leading" secondItem="xTE-AZ-ryc" secondAttribute="leading" constant="8" id="SbN-WK-Tfp"/>
+                                    <constraint firstItem="Jwm-7G-PcJ" firstAttribute="top" secondItem="xTE-AZ-ryc" secondAttribute="top" constant="4" id="ZFR-oU-1pq"/>
+                                    <constraint firstAttribute="width" constant="300" id="a5i-VC-brT"/>
+                                    <constraint firstAttribute="bottom" secondItem="T9d-Te-fjf" secondAttribute="bottom" constant="4" id="agj-Gy-Rhx"/>
+                                    <constraint firstAttribute="trailing" secondItem="T9d-Te-fjf" secondAttribute="trailing" constant="8" id="hVq-LC-1aL"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lUU-51-KuS" firstAttribute="leading" secondItem="uHe-AG-CDA" secondAttribute="leading" constant="4" id="D8y-lo-bhA"/>
+                            <constraint firstItem="lUU-51-KuS" firstAttribute="top" secondItem="uHe-AG-CDA" secondAttribute="top" constant="4" id="NV4-bB-eWf"/>
+                            <constraint firstAttribute="trailing" secondItem="lUU-51-KuS" secondAttribute="trailing" constant="4" id="XBw-N1-bL6"/>
+                            <constraint firstAttribute="trailing" secondItem="xTE-AZ-ryc" secondAttribute="trailing" constant="4" id="fFg-lm-0bY"/>
+                            <constraint firstItem="xTE-AZ-ryc" firstAttribute="top" secondItem="lUU-51-KuS" secondAttribute="bottom" constant="4" id="s2k-NJ-O9s"/>
+                            <constraint firstAttribute="bottom" secondItem="xTE-AZ-ryc" secondAttribute="bottom" constant="4" id="skB-MW-QOH"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uHe-AG-CDA" firstAttribute="top" secondItem="HOM-wa-tp6" secondAttribute="top" id="1oI-U5-yDh"/>
+                    <constraint firstAttribute="bottom" secondItem="uHe-AG-CDA" secondAttribute="bottom" id="HHE-0y-GEb"/>
+                    <constraint firstItem="uHe-AG-CDA" firstAttribute="leading" secondItem="HOM-wa-tp6" secondAttribute="leading" id="TpM-IL-2LO"/>
+                    <constraint firstAttribute="trailing" secondItem="uHe-AG-CDA" secondAttribute="trailing" id="r4o-YT-fps"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="479" height="162"/>
+            <connections>
+                <outlet property="chat_text" destination="Jwm-7G-PcJ" id="QZq-9y-NdX"/>
+                <outlet property="chat_time" destination="T9d-Te-fjf" id="WV6-db-Mut"/>
+                <outlet property="chat_username" destination="lUU-51-KuS" id="HV4-qj-byC"/>
+            </connections>
+            <point key="canvasLocation" x="245.6521739130435" y="79.017857142857139"/>
+        </collectionViewCell>
+    </objects>
+</document>

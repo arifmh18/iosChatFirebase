@@ -25,6 +25,10 @@
 		ADE43C6224C8696B000CEC7A /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE43C6124C8696B000CEC7A /* SearchModel.swift */; };
 		ADE43C6424C869A9000CEC7A /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE43C6324C869A9000CEC7A /* ProfileModel.swift */; };
 		ADE43C6624C86A4C000CEC7A /* PercakapanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE43C6524C86A4C000CEC7A /* PercakapanModel.swift */; };
+		FA0BCFBF24D12CF500D078AC /* ChatDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BCFBD24D12CF500D078AC /* ChatDetailCell.swift */; };
+		FA0BCFC024D12CF500D078AC /* ChatDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0BCFBE24D12CF500D078AC /* ChatDetailCell.xib */; };
+		FA0BCFC224D12F1D00D078AC /* ChatDetailSendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0BCFC124D12F1D00D078AC /* ChatDetailSendCell.xib */; };
+		FA0BCFC624D133E500D078AC /* DetailChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BCFC524D133E500D078AC /* DetailChatController.swift */; };
 		FAC75A3624D00091009C6EE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC75A3524D00091009C6EE5 /* GoogleService-Info.plist */; };
 		FAC75A3824D00B4E009C6EE5 /* ListChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC75A3724D00B4E009C6EE5 /* ListChatModel.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +56,10 @@
 		ADE43C6124C8696B000CEC7A /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		ADE43C6324C869A9000CEC7A /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		ADE43C6524C86A4C000CEC7A /* PercakapanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercakapanModel.swift; sourceTree = "<group>"; };
+		FA0BCFBD24D12CF500D078AC /* ChatDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailCell.swift; sourceTree = "<group>"; };
+		FA0BCFBE24D12CF500D078AC /* ChatDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatDetailCell.xib; sourceTree = "<group>"; };
+		FA0BCFC124D12F1D00D078AC /* ChatDetailSendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatDetailSendCell.xib; sourceTree = "<group>"; };
+		FA0BCFC524D133E500D078AC /* DetailChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChatController.swift; sourceTree = "<group>"; };
 		FAC75A3524D00091009C6EE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAC75A3724D00B4E009C6EE5 /* ListChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChatModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +146,7 @@
 				ADC7F20E24C59A530068EDEC /* LoginViewController.swift */,
 				ADC0B56B24C6DBB9000C3955 /* RegisterViewController.swift */,
 				ADC0B56F24C701A3000C3955 /* ListChatViewController.swift */,
+				FA0BCFC524D133E500D078AC /* DetailChatController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -157,6 +166,9 @@
 			children = (
 				ADE43C5A24C86627000CEC7A /* ChatCell.swift */,
 				ADE43C5B24C86627000CEC7A /* ChatCell.xib */,
+				FA0BCFBD24D12CF500D078AC /* ChatDetailCell.swift */,
+				FA0BCFBE24D12CF500D078AC /* ChatDetailCell.xib */,
+				FA0BCFC124D12F1D00D078AC /* ChatDetailSendCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -182,7 +194,6 @@
 				ADC7F1F024C5931B0068EDEC /* Frameworks */,
 				ADC7F1F124C5931B0068EDEC /* Resources */,
 				B5E73329D7978BADC43FAD37 /* [CP] Embed Pods Frameworks */,
-				2762CB678963B9AFD02EA407 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,8 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC7F20324C5931C0068EDEC /* LaunchScreen.storyboard in Resources */,
+				FA0BCFC024D12CF500D078AC /* ChatDetailCell.xib in Resources */,
 				ADE43C5D24C86627000CEC7A /* ChatCell.xib in Resources */,
 				ADC7F20024C5931C0068EDEC /* Assets.xcassets in Resources */,
+				FA0BCFC224D12F1D00D078AC /* ChatDetailSendCell.xib in Resources */,
 				ADC0B56E24C7015E000C3955 /* MainChat.storyboard in Resources */,
 				ADC7F1FE24C5931B0068EDEC /* Main.storyboard in Resources */,
 				FAC75A3624D00091009C6EE5 /* GoogleService-Info.plist in Resources */,
@@ -265,23 +278,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2762CB678963B9AFD02EA407 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Chat Firebase/Pods-Chat Firebase-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Chat Firebase/Pods-Chat Firebase-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chat Firebase/Pods-Chat Firebase-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B5E73329D7978BADC43FAD37 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,9 +303,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC0B57024C701A3000C3955 /* ListChatViewController.swift in Sources */,
+				FA0BCFC624D133E500D078AC /* DetailChatController.swift in Sources */,
 				ADE43C5C24C86627000CEC7A /* ChatCell.swift in Sources */,
 				ADC0B57224C7037D000C3955 /* DatabaseManagement.swift in Sources */,
 				ADE43C6624C86A4C000CEC7A /* PercakapanModel.swift in Sources */,
+				FA0BCFBF24D12CF500D078AC /* ChatDetailCell.swift in Sources */,
 				FAC75A3824D00B4E009C6EE5 /* ListChatModel.swift in Sources */,
 				ADE43C6424C869A9000CEC7A /* ProfileModel.swift in Sources */,
 				ADE43C6224C8696B000CEC7A /* SearchModel.swift in Sources */,

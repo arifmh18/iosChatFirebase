@@ -15,10 +15,7 @@ class ListChatViewController: UIViewController {
 
     @IBOutlet weak var chat_list: UITableView!
     var dataChat = [
-        ListChatModel(id: "1", content: "Content1", sender: "sender1", text: "text content 1", timestamp: "10 menit yang lalu"),
-        ListChatModel(id: "2", content: "Content2", sender: "sender2", text: "text content 2", timestamp: "12 menit yang lalu"),
-        ListChatModel(id: "3", content: "Content3", sender: "sender3", text: "text content 3", timestamp: "13 menit yang lalu"),
-        ListChatModel(id: "4", content: "Content4", sender: "sender4", text: "text content 4", timestamp: "14 menit yang lalu")
+        ListChatModel(id: "1", content: "Content1", sender: "Ruang Percakapan", text: "Silahkan Masuk Untuk Diskusi", timestamp: "10 menit yang lalu")
     ]
     
     override func viewDidLoad() {
@@ -33,17 +30,11 @@ class ListChatViewController: UIViewController {
         let cell = UINib(nibName: "ChatCell", bundle: nil)
         
         chat_list.register(cell, forCellReuseIdentifier: "chatCell")
-        
-        let userID = Auth.auth().currentUser?.uid
-        ref.child("user").observeSingleEvent(of: .childAdded, with: { (snapshot) in
-          // Get user value
-            let value = snapshot.value as? [String: AnyObject] ?? [:]
-//          let username = value?["username"] as? String ?? ""
-
-            print(value)
-          // ...
-          }) { (error) in
-            print(error.localizedDescription)
+                
+        ref.child("posts").observe(.value) { (snapshot) in
+            for child in snapshot.children {
+                print("print \(child)")
+            }
         }
         
         chat_list.delegate = self
@@ -64,6 +55,14 @@ extension ListChatViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
         cell.setData(data: data)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "detailChat") as! DetailChatController
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

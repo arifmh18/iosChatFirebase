@@ -49,8 +49,12 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            let user = result.user
-            print("Berhasil Login Dengan User \(user)")
+            let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "listChat") as! ListChatViewController
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
+
         }
     }
     
