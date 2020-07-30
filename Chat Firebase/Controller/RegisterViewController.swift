@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
 class RegisterViewController: UIViewController {
 
@@ -15,14 +17,26 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var registerEmail: UITextField!
     @IBOutlet weak var registerPassword: UITextField!
     @IBOutlet weak var registerAlamat: UITextField!
+    @IBOutlet weak var registerAvatar: UIImageView!
     
     @IBOutlet weak var registerDaftar: UIButton!
+    
+    var dataImage : UIImage? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Register"
         
         registerDaftar.addTarget(self, action: #selector(register), for: .touchUpInside)
+        let tapAvatar = UITapGestureRecognizer(target: self, action: #selector(pickImage))
+        self.registerAvatar.addGestureRecognizer(tapAvatar)
+    }
+    
+    @objc func pickImage(){
+        ImagePickerManager().pickImage(self) { (image) in
+            self.registerAvatar.image = image
+            self.dataImage = image
+        }
     }
     
     @objc func register(){
@@ -52,12 +66,37 @@ class RegisterViewController: UIViewController {
                     return
                 }
                 
-                DatabaseManagement.shared.insertUser(with: ChatUser(
-                    namaLengkap: name,
-                    emailAddress: email,
-                    streetAddress: address))
+                guard let data = self.dataImage?.jpegData(compressionQuality: 0.5) else { return }
                 
-                self.navigationController?.popViewController(animated: true)
+                let storageRef = Storage.storage().reference()
+                let dbRef = Database.database().reference()
+                
+                let riversRef = storageRef.child("users/\(dbRef.childByAutoId()).jpg")
+
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpg"
+                
+                riversRef.putData(data, metadata: metaData) { (metadata, error) in
+                  guard let metadata = metadata else {
+                    return
+                  }
+
+                    print(metadata)
+                    riversRef.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                      // Uh-oh, an error occurred!
+                      return
+                    }
+                    
+                        DatabaseManagement.shared.insertUser(with: ChatUser(
+                            namaLengkap: name,
+                            emailAddress: email, avatar: "\(downloadURL)",
+                            streetAddress: address))
+                        
+                        self.navigationController?.popViewController(animated: true)
+
+                  }
+                }
             }
 
         }

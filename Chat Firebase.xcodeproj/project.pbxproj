@@ -29,6 +29,7 @@
 		FA0BCFC024D12CF500D078AC /* ChatDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0BCFBE24D12CF500D078AC /* ChatDetailCell.xib */; };
 		FA0BCFC224D12F1D00D078AC /* ChatDetailSendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0BCFC124D12F1D00D078AC /* ChatDetailSendCell.xib */; };
 		FA0BCFC624D133E500D078AC /* DetailChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BCFC524D133E500D078AC /* DetailChatController.swift */; };
+		FA0BCFC824D273AF00D078AC /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0BCFC724D273AF00D078AC /* ImagePickerManager.swift */; };
 		FAC75A3624D00091009C6EE5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAC75A3524D00091009C6EE5 /* GoogleService-Info.plist */; };
 		FAC75A3824D00B4E009C6EE5 /* ListChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC75A3724D00B4E009C6EE5 /* ListChatModel.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		FA0BCFBE24D12CF500D078AC /* ChatDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatDetailCell.xib; sourceTree = "<group>"; };
 		FA0BCFC124D12F1D00D078AC /* ChatDetailSendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatDetailSendCell.xib; sourceTree = "<group>"; };
 		FA0BCFC524D133E500D078AC /* DetailChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailChatController.swift; sourceTree = "<group>"; };
+		FA0BCFC724D273AF00D078AC /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		FAC75A3524D00091009C6EE5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAC75A3724D00B4E009C6EE5 /* ListChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChatModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 				ADC7F1F624C5931B0068EDEC /* AppDelegate.swift */,
 				ADC7F1F824C5931B0068EDEC /* SceneDelegate.swift */,
 				ADC0B57124C7037D000C3955 /* DatabaseManagement.swift */,
+				FA0BCFC724D273AF00D078AC /* ImagePickerManager.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				ADC7F1F724C5931B0068EDEC /* AppDelegate.swift in Sources */,
 				ADC7F1F924C5931B0068EDEC /* SceneDelegate.swift in Sources */,
 				ADE43C5F24C868DF000CEC7A /* ChatModel.swift in Sources */,
+				FA0BCFC824D273AF00D078AC /* ImagePickerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

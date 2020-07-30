@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class ListChatViewController: UIViewController {
 
@@ -21,9 +22,17 @@ class ListChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOut))
         ref = Database.database().reference()
         
         getData()
+    }
+    
+    @objc func logOut() {
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     func getData(){
