@@ -9,11 +9,14 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class DetailChatController: UIViewController {
 
     @IBOutlet weak var detailChat_contentChat: UITextField!
     @IBOutlet weak var detailChat_list: UITableView!
+    @IBOutlet weak var detailChat_indicator: UIActivityIndicatorView!
+    @IBOutlet weak var detailChat_attachment: UIButton!
     
     var dataChat = [ChatModel]()
     var email = ""
@@ -21,27 +24,63 @@ class DetailChatController: UIViewController {
     var currentEmailRaw = ""
     var idRoom = ""
     var ref: DatabaseReference!
+    var storageRef : StorageReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = email
         
+        self.detailChat_indicator.isHidden = true
         self.currentEmailRaw = Auth.auth().currentUser?.email ?? ""
-        print(currentEmailRaw)
         self.currentEmail = currentEmailRaw.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
         // Do any additional setup after loading the view.
         let cell = UINib(nibName: "ChatTableCell", bundle: nil)
         let cellSend = UINib(nibName: "ChatTableSendCell", bundle: nil)
         
         ref = Database.database().reference()
+        storageRef = Storage.storage().reference()
         
         detailChat_list.register(cell, forCellReuseIdentifier: "cellTable")
         detailChat_list.register(cellSend, forCellReuseIdentifier: "cellTableSend")
+        detailChat_attachment.addTarget(self, action: #selector(getImage), for: .touchUpInside)
         detailChat_list.delegate = self
         detailChat_list.dataSource = self
 
         getData()
+    }
+    
+    @objc func getImage(){
+        ImagePickerManager().pickImage(self) { (image) in
+            self.detailChat_indicator.isHidden = true
+            let pathImage = self.storageRef.child("chat/\(self.randomString(length: 20)).jpg")
+            
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpg"
+            
+            guard let data = image.jpegData(compressionQuality: 0.5) else { return }
+            
+            pathImage.putData(data, metadata: metaData) { (metaData, error) in
+                guard let metadata = metaData else {
+                    return
+                }
+                pathImage.downloadURL { (url, error) in
+                    guard let downloadURL = url else {
+                        // Uh-oh, an error occurred!
+                        return
+                    }
+                    let email = Auth.auth().currentUser?.email ?? ""
+                    let postObject = [
+                        "email":email,
+                        "text": "\(downloadURL)",
+                        "type":"attchment",
+                        "timestamp": [".sv":"timestamp"]
+                        ] as [String:Any]
+                    self.ref.child("Percakapan/\(self.idRoom)").childByAutoId().setValue(postObject)
+                    self.detailChat_indicator.isHidden = true
+                }
+            }
+        }
     }
     
     func getData(){
@@ -71,8 +110,9 @@ class DetailChatController: UIViewController {
                 let dataCore = dataSnapshop?.value as? [String:Any]
                 let email = dataCore?["email"] as! String
                 let text = dataCore?["text"] as! String
+                let type = dataCore?["type"] as! String
                 let timeStamp = dataCore?["timestamp"] as! Double
-                let chat = ChatModel(email: email, text: text, timestamp: timeStamp)
+                let chat = ChatModel(email: email, text: text, type: type, timestamp: timeStamp)
                 chatData.append(chat)
             }
             self.dataChat = chatData
@@ -103,6 +143,7 @@ class DetailChatController: UIViewController {
         let postObject = [
             "email":email,
             "text": text,
+            "type":"text",
             "timestamp": [".sv":"timestamp"]
             ] as [String:Any]
         ref.child("Percakapan/\(self.idRoom)").childByAutoId().setValue(postObject)
@@ -128,27 +169,4 @@ extension DetailChatController : UITableViewDelegate, UITableViewDataSource{
         }
     }
     
-}
-extension DetailChatController : UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataChat.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let data = self.dataChat[indexPath.item]
-        if data.email == self.currentEmailRaw {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellSend", for: indexPath) as! ChatDetailCell
-            cell.setData(data: data)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellReceived", for: indexPath) as! ChatDetailCell
-            cell.setData(data: data)
-            return cell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.size.width - 12, height: 100)
-    }
 }

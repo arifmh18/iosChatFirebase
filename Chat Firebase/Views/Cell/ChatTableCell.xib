@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -31,13 +31,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-5Q-wXR">
+                        <rect key="frame" x="16" y="8" width="199" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="vFf-wy-iKY"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="fMI-5Q-wXR" secondAttribute="trailing" constant="105" id="4YS-UE-cJT"/>
                     <constraint firstItem="tGR-yA-28Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="6XZ-2g-x80"/>
+                    <constraint firstAttribute="bottom" secondItem="fMI-5Q-wXR" secondAttribute="bottom" constant="8" id="7YM-2A-5r4"/>
                     <constraint firstItem="R0H-o4-0oX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="EXu-K2-bRi"/>
                     <constraint firstAttribute="bottom" secondItem="R0H-o4-0oX" secondAttribute="bottom" constant="4" id="Ljy-6m-Tnw"/>
+                    <constraint firstItem="fMI-5Q-wXR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ot5-16-nlH"/>
                     <constraint firstItem="tGR-yA-28Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SOA-PY-TCZ"/>
                     <constraint firstAttribute="trailing" secondItem="tGR-yA-28Z" secondAttribute="trailing" constant="110" id="aMK-pn-GEZ"/>
+                    <constraint firstItem="fMI-5Q-wXR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nNH-nD-f14"/>
                     <constraint firstAttribute="trailing" secondItem="R0H-o4-0oX" secondAttribute="trailing" constant="100" id="oac-Gb-s83"/>
                     <constraint firstAttribute="bottom" secondItem="tGR-yA-28Z" secondAttribute="bottom" constant="12" id="xcb-oh-U2o"/>
                     <constraint firstItem="R0H-o4-0oX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="xeI-mM-YD6"/>
@@ -46,6 +56,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellContent" destination="tGR-yA-28Z" id="07g-6H-Vp3"/>
+                <outlet property="cellHeightImage" destination="vFf-wy-iKY" id="ObP-K5-hg0"/>
+                <outlet property="cellImage" destination="fMI-5Q-wXR" id="lzv-Zg-tis"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
         </tableViewCell>

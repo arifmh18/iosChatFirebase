@@ -17,6 +17,7 @@ class ListChatViewController: UIViewController {
     var filteredTableData = [ListChatModel]()
     var dataAllUser = [ListChatModel]()
     var dataFriend = [ListChatModel]()
+    var currentMailSafe = ""
 
     @IBOutlet weak var chat_list: UITableView!
     var currentEmail = ""
@@ -28,7 +29,15 @@ class ListChatViewController: UIViewController {
         navigationItem.title = Auth.auth().currentUser?.email ?? ""
         
         ref = Database.database().reference()
+        let cell = UINib(nibName: "ChatCell", bundle: nil)
+        let cellAllUser = UINib(nibName: "AllUserCell", bundle: nil)
         
+        chat_list.register(cell, forCellReuseIdentifier: "chatCell")
+        chat_list.register(cellAllUser, forCellReuseIdentifier: "cellUser")
+
+        let currentMail = Auth.auth().currentUser?.email ?? ""
+        currentMailSafe = currentMail.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+
         getData()
         
         resultSearchController = ({
@@ -61,11 +70,29 @@ class ListChatViewController: UIViewController {
     }
     
     func getData(){
-        let cell = UINib(nibName: "ChatCell", bundle: nil)
-        
-        chat_list.register(cell, forCellReuseIdentifier: "chatCell")
-        
         ref.child("users").observe(.value) { (snapshot) in
+            var listData = [ListChatModel]()
+            for child in snapshot.children {
+                let dataSnapshop = child as? DataSnapshot
+                let dataCore = dataSnapshop?.value as? [String:Any]
+                
+                let nama = dataCore?["nameFull"] as? String ?? ""
+                let avatar = dataCore?["avatar"] as? String ?? ""
+                let email = dataCore?["email"] as? String ?? ""
+                let currentEmail = Auth.auth().currentUser?.email ?? ""
+                let user = ListChatModel(nama: nama, avatar: avatar, text: email, timestamp: "")
+                if email == currentEmail { }
+                else {
+                    listData.append(user)
+                }
+                
+            }
+            self.dataAllUser = listData
+//            self.dataFriend = listData
+            self.chat_list.reloadData()
+        }
+        
+        ref.child("roomFriend/\(currentMailSafe)").observe(.value) { (snapshot) in
             var listData = [ListChatModel]()
             for child in snapshot.children {
                 let dataSnapshop = child as? DataSnapshot
@@ -85,7 +112,7 @@ class ListChatViewController: UIViewController {
             self.dataFriend = listData
             self.chat_list.reloadData()
         }
-        
+
         chat_list.delegate = self
         chat_list.dataSource = self
         DispatchQueue.main.async {
@@ -94,7 +121,18 @@ class ListChatViewController: UIViewController {
     }
 }
 
-extension ListChatViewController : UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+extension ListChatViewController : UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating, AllUserDelegate {
+    func reqFriendlist(data: ListChatModel) {
+        let mail = data.text.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+        ref.child("roomFriend/\(currentMailSafe)/\(mail)").setValue([
+            "nameFull":data.nama,
+            "streetAddress":data.timestamp,
+            "email":data.text,
+            "avatar":data.avatar
+        ])
+        chat_list.reloadData()
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         filteredTableData.removeAll(keepingCapacity: false)
 
@@ -118,12 +156,14 @@ extension ListChatViewController : UITableViewDelegate, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
         if (resultSearchController.isActive) {
             let data = self.dataAllUser[indexPath.item]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellUser", for: indexPath) as! AllUserCell
             cell.setData(data: data)
+            cell.delegate = self
             return cell
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
             let data = self.dataFriend[indexPath.item]
             cell.setData(data: data)
             return cell

@@ -71,7 +71,7 @@ class RegisterViewController: UIViewController {
                 let storageRef = Storage.storage().reference()
                 let dbRef = Database.database().reference()
                 
-                let riversRef = storageRef.child("users/\(dbRef.childByAutoId()).jpg")
+                let riversRef = storageRef.child("users/\(self.randomString(length: 15)).jpg")
 
                 let metaData = StorageMetadata()
                 metaData.contentType = "image/jpg"
@@ -115,4 +115,11 @@ class RegisterViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Oke", style: .default, handler: nil))
         present(alert, animated: true)
     }
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
+
 }

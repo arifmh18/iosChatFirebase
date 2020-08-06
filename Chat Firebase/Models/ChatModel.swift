@@ -11,11 +11,13 @@ import Foundation
 class ChatModel {
     var email : String
     var text : String
+    var type : String
     var timestamp : Double
     
-    init(email:String, text:String, timestamp:Double) {
+    init(email:String, text:String, type:String, timestamp:Double) {
         self.email = email
         self.text = text
         self.timestamp = timestamp
+        self.type = type
     }
 }
