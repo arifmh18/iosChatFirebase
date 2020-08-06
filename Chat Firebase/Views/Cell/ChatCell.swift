@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ChatCell: UITableViewCell {
     
@@ -25,7 +26,10 @@ class ChatCell: UITableViewCell {
     }
     
     func setData(data: ListChatModel){
-        self.cell_userName.text = data.sender
+        let thumb = URL(string: data.avatar)
+        
+        self.cell_userName.text = data.nama
         self.cell_lastMessage.text = data.text
+        self.cell_imageAvatar.kf.setImage(with: thumb)
     }
 }

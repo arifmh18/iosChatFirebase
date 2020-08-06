@@ -9,6 +9,7 @@ target 'Chat Firebase' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Kingfisher'
 
   # Pods for Chat Firebase
 

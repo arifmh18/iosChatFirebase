@@ -26,12 +26,22 @@ class LoginViewController: UIViewController {
         loginMasuk.addTarget(self, action: #selector(login), for: .touchUpInside)
         
         if Auth.auth().currentUser != nil {
-            let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "listChat") as! ListChatViewController
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: true, completion: nil)
+            moveChat()
         }
+    }
+    
+    func moveChat(){
+        let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+        
+            let allControllers = NSMutableArray(array: self.navigationController!.viewControllers)
+            allControllers.removeObject(at: allControllers.count - 2)
+            self.navigationController!.setViewControllers(allControllers as [AnyObject] as! [UIViewController], animated: false)
+        }
+
+        let vc = storyboard.instantiateViewController(identifier: "listChat") as! ListChatViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func login(){
@@ -48,13 +58,7 @@ class LoginViewController: UIViewController {
                 print("Login Error")
                 return
             }
-            
-            let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "listChat") as! ListChatViewController
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true, completion: nil)
-
+            self.moveChat()
         }
     }
     

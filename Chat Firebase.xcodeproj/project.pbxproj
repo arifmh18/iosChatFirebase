@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8EAE50352BF2C66FE9D7E122 /* Pods_Chat_Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77CAF19FF80686456D13B54E /* Pods_Chat_Firebase.framework */; };
+		AD0AD20524D95AB8001ED090 /* ChatTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD0AD20324D95AB8001ED090 /* ChatTableCell.swift */; };
+		AD0AD20624D95AB8001ED090 /* ChatTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD0AD20424D95AB8001ED090 /* ChatTableCell.xib */; };
+		AD0AD20824D95C5D001ED090 /* ChatTableSendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD0AD20724D95C5D001ED090 /* ChatTableSendCell.xib */; };
 		ADC0B56C24C6DBB9000C3955 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0B56B24C6DBB9000C3955 /* RegisterViewController.swift */; };
 		ADC0B56E24C7015E000C3955 /* MainChat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADC0B56D24C7015E000C3955 /* MainChat.storyboard */; };
 		ADC0B57024C701A3000C3955 /* ListChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADC0B56F24C701A3000C3955 /* ListChatViewController.swift */; };
@@ -38,6 +41,9 @@
 		177B06DDA171790947029D88 /* Pods-Chat Firebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Firebase.release.xcconfig"; path = "Target Support Files/Pods-Chat Firebase/Pods-Chat Firebase.release.xcconfig"; sourceTree = "<group>"; };
 		62B02417FE0F20983176ED21 /* Pods-Chat Firebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Firebase.debug.xcconfig"; path = "Target Support Files/Pods-Chat Firebase/Pods-Chat Firebase.debug.xcconfig"; sourceTree = "<group>"; };
 		77CAF19FF80686456D13B54E /* Pods_Chat_Firebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat_Firebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD0AD20324D95AB8001ED090 /* ChatTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableCell.swift; sourceTree = "<group>"; };
+		AD0AD20424D95AB8001ED090 /* ChatTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableCell.xib; sourceTree = "<group>"; };
+		AD0AD20724D95C5D001ED090 /* ChatTableSendCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableSendCell.xib; sourceTree = "<group>"; };
 		ADC0B56B24C6DBB9000C3955 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		ADC0B56D24C7015E000C3955 /* MainChat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainChat.storyboard; sourceTree = "<group>"; };
 		ADC0B56F24C701A3000C3955 /* ListChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListChatViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +178,9 @@
 				FA0BCFBD24D12CF500D078AC /* ChatDetailCell.swift */,
 				FA0BCFBE24D12CF500D078AC /* ChatDetailCell.xib */,
 				FA0BCFC124D12F1D00D078AC /* ChatDetailSendCell.xib */,
+				AD0AD20324D95AB8001ED090 /* ChatTableCell.swift */,
+				AD0AD20424D95AB8001ED090 /* ChatTableCell.xib */,
+				AD0AD20724D95C5D001ED090 /* ChatTableSendCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -246,10 +255,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADC7F20324C5931C0068EDEC /* LaunchScreen.storyboard in Resources */,
+				AD0AD20624D95AB8001ED090 /* ChatTableCell.xib in Resources */,
 				FA0BCFC024D12CF500D078AC /* ChatDetailCell.xib in Resources */,
 				ADE43C5D24C86627000CEC7A /* ChatCell.xib in Resources */,
 				ADC7F20024C5931C0068EDEC /* Assets.xcassets in Resources */,
 				FA0BCFC224D12F1D00D078AC /* ChatDetailSendCell.xib in Resources */,
+				AD0AD20824D95C5D001ED090 /* ChatTableSendCell.xib in Resources */,
 				ADC0B56E24C7015E000C3955 /* MainChat.storyboard in Resources */,
 				ADC7F1FE24C5931B0068EDEC /* Main.storyboard in Resources */,
 				FAC75A3624D00091009C6EE5 /* GoogleService-Info.plist in Resources */,
@@ -317,6 +328,7 @@
 				ADC7F20F24C59A530068EDEC /* LoginViewController.swift in Sources */,
 				ADC0B56C24C6DBB9000C3955 /* RegisterViewController.swift in Sources */,
 				ADC7F1FB24C5931B0068EDEC /* ViewController.swift in Sources */,
+				AD0AD20524D95AB8001ED090 /* ChatTableCell.swift in Sources */,
 				ADC7F1F724C5931B0068EDEC /* AppDelegate.swift in Sources */,
 				ADC7F1F924C5931B0068EDEC /* SceneDelegate.swift in Sources */,
 				ADE43C5F24C868DF000CEC7A /* ChatModel.swift in Sources */,

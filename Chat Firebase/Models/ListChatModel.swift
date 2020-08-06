@@ -9,16 +9,14 @@
 import Foundation
 
 class ListChatModel{
-    var id : String
-    var content : String
-    var sender : String
+    var nama : String
+    var avatar : String
     var text : String
     var timestamp : String
     
-    init(id:String, content:String, sender:String, text:String, timestamp:String) {
-        self.id = id
-        self.content = content
-        self.sender = sender
+    init(nama:String, avatar:String, text:String, timestamp:String) {
+        self.nama = nama
+        self.avatar = avatar
         self.text = text
         self.timestamp = timestamp
     }

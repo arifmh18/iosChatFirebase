@@ -36,9 +36,10 @@ extension DatabaseManagement{
     }
     
     public func insertUser(with user: ChatUser){
-        database.child(user.safeEmail).setValue([
+        database.child("users/\(user.safeEmail)").setValue([
             "nameFull":user.namaLengkap,
             "streetAddress":user.streetAddress,
+            "email":user.emailAddress,
             "avatar":user.avatar
         ])
     }

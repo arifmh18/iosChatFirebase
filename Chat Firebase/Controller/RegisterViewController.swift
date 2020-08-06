@@ -77,25 +77,32 @@ class RegisterViewController: UIViewController {
                 metaData.contentType = "image/jpg"
                 
                 riversRef.putData(data, metadata: metaData) { (metadata, error) in
-                  guard let metadata = metadata else {
-                    return
-                  }
-
-                    print(metadata)
-                    riversRef.downloadURL { (url, error) in
-                    guard let downloadURL = url else {
-                      // Uh-oh, an error occurred!
-                      return
+                    guard let metadata = metadata else {
+                        return
                     }
-                    
+                    riversRef.downloadURL { (url, error) in
+                        guard let downloadURL = url else {
+                            // Uh-oh, an error occurred!
+                            return
+                        }
                         DatabaseManagement.shared.insertUser(with: ChatUser(
                             namaLengkap: name,
                             emailAddress: email, avatar: "\(downloadURL)",
                             streetAddress: address))
                         
-                        self.navigationController?.popViewController(animated: true)
+                        let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
+                        let deadlineTime = DispatchTime.now() + .seconds(1)
+                        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+                        
+                            let allControllers = NSMutableArray(array: self.navigationController!.viewControllers)
+                            allControllers.removeObject(at: allControllers.count - 3)
+                            self.navigationController!.setViewControllers(allControllers as [AnyObject] as! [UIViewController], animated: false)
+                        }
+                        let vc = storyboard.instantiateViewController(withIdentifier: "listChat") as! ListChatViewController
+                        self.navigationController!.pushViewController(vc, animated: true)
 
-                  }
+                        
+                    }
                 }
             }
 

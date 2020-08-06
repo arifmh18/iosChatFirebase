@@ -13,37 +13,77 @@ import FirebaseDatabase
 class ListChatViewController: UIViewController {
 
     var ref: DatabaseReference!
+    var resultSearchController = UISearchController()
+    var filteredTableData = [ListChatModel]()
+    var dataAllUser = [ListChatModel]()
+    var dataFriend = [ListChatModel]()
 
     @IBOutlet weak var chat_list: UITableView!
-    var dataChat = [
-        ListChatModel(id: "1", content: "Content1", sender: "Ruang Percakapan", text: "Silahkan Masuk Untuk Diskusi", timestamp: "10 menit yang lalu")
-    ]
+    var currentEmail = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOut))
+        navigationItem.title = Auth.auth().currentUser?.email ?? ""
+        
         ref = Database.database().reference()
         
         getData()
+        
+        resultSearchController = ({
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.searchBar.sizeThatFits(CGSize(width: CGFloat(self.view.frame.size.width - 50), height: 50.0))
+            controller.dimsBackgroundDuringPresentation = false
+            self.chat_list.tableHeaderView = controller.searchBar
+
+            return controller
+        })()
+
     }
     
     @objc func logOut() {
         do { try Auth.auth().signOut() }
         catch { print("already logged out") }
         
-        navigationController?.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+        
+            let allControllers = NSMutableArray(array: self.navigationController!.viewControllers)
+            allControllers.removeObject(at: allControllers.count - 2)
+            self.navigationController!.setViewControllers(allControllers as [AnyObject] as! [UIViewController], animated: false)
+        }
+        let vc = storyboard.instantiateViewController(withIdentifier: "login") as! LoginViewController
+        self.navigationController!.pushViewController(vc, animated: true)
+
     }
     
     func getData(){
         let cell = UINib(nibName: "ChatCell", bundle: nil)
         
         chat_list.register(cell, forCellReuseIdentifier: "chatCell")
-                
-        ref.child("posts").observe(.value) { (snapshot) in
+        
+        ref.child("users").observe(.value) { (snapshot) in
+            var listData = [ListChatModel]()
             for child in snapshot.children {
-                print("print \(child)")
+                let dataSnapshop = child as? DataSnapshot
+                let dataCore = dataSnapshop?.value as? [String:Any]
+                
+                let nama = dataCore?["nameFull"] as? String ?? ""
+                let avatar = dataCore?["avatar"] as? String ?? ""
+                let email = dataCore?["email"] as? String ?? ""
+                let currentEmail = Auth.auth().currentUser?.email ?? ""
+                let user = ListChatModel(nama: nama, avatar: avatar, text: email, timestamp: "")
+                if email == currentEmail { }
+                else {
+                    listData.append(user)
+                }
+                
             }
+            self.dataFriend = listData
+            self.chat_list.reloadData()
         }
         
         chat_list.delegate = self
@@ -54,24 +94,61 @@ class ListChatViewController: UIViewController {
     }
 }
 
-extension ListChatViewController : UITableViewDelegate, UITableViewDataSource {
+extension ListChatViewController : UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredTableData.removeAll(keepingCapacity: false)
+
+        var temp : [ListChatModel] = []
+//        for i in 0 ..< product.count{
+//            if (product[i].name?.lowercased().contains(searchController.searchBar.text!.lowercased()) ?? false) {
+//                temp.append(product[i])
+//            }
+//        }
+        self.filteredTableData = temp
+        self.chat_list.reloadData()
+
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataChat.count
+        if resultSearchController.isActive {
+            return self.dataAllUser.count
+        } else {
+            return self.dataFriend.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = self.dataChat[indexPath.item]
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
-        cell.setData(data: data)
-        return cell
+        if (resultSearchController.isActive) {
+            let data = self.dataAllUser[indexPath.item]
+            cell.setData(data: data)
+            return cell
+        } else {
+            let data = self.dataFriend[indexPath.item]
+            cell.setData(data: data)
+            return cell
+        }
+
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "detailChat") as! DetailChatController
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if (resultSearchController.isActive) {
+            resultSearchController.isActive = false
+            let data = self.dataAllUser[indexPath.item]
+            let email = data.text.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+            let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "detailChat") as! DetailChatController
+            vc.email = email
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let data = self.dataFriend[indexPath.item]
+            let email = data.text.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+            let storyboard = UIStoryboard(name: "MainChat", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "detailChat") as! DetailChatController
+            vc.email = email
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
