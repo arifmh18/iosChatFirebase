@@ -10,6 +10,8 @@ target 'Chat Firebase' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'Kingfisher'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
   # Pods for Chat Firebase
 

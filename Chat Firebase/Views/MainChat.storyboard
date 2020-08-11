@@ -49,8 +49,8 @@
                                 <rect key="frame" x="4" y="613" width="367" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Kirim Pesan Disini" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dvz-aq-2AQ">
-                                        <rect key="frame" x="39" y="8" width="274" height="34"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="70" y="8" width="243" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YxI-Xz-G3e">
@@ -71,18 +71,31 @@
                                         </constraints>
                                         <state key="normal" image="paperclip" catalog="system"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWu-aI-InU">
+                                        <rect key="frame" x="35" y="0.0" width="35" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="WBz-4R-9Z1"/>
+                                        </constraints>
+                                        <state key="normal" image="location" catalog="system"/>
+                                        <connections>
+                                            <action selector="sendLocation:" destination="tLS-ta-8Fb" eventType="touchUpInside" id="BfG-ER-Q4n"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Vrl-8A-7mc" secondAttribute="bottom" id="2U8-6w-s8F"/>
                                     <constraint firstAttribute="trailing" secondItem="YxI-Xz-G3e" secondAttribute="trailing" id="4kM-1e-NC5"/>
+                                    <constraint firstAttribute="bottom" secondItem="OWu-aI-InU" secondAttribute="bottom" id="56x-aC-gg3"/>
                                     <constraint firstItem="Vrl-8A-7mc" firstAttribute="top" secondItem="7DB-0E-cVf" secondAttribute="top" id="8o5-BA-w7w"/>
                                     <constraint firstItem="Dvz-aq-2AQ" firstAttribute="centerY" secondItem="7DB-0E-cVf" secondAttribute="centerY" id="A1e-kK-kvo"/>
                                     <constraint firstItem="YxI-Xz-G3e" firstAttribute="top" secondItem="7DB-0E-cVf" secondAttribute="top" constant="4" id="FY1-IG-WMY"/>
-                                    <constraint firstItem="Dvz-aq-2AQ" firstAttribute="leading" secondItem="Vrl-8A-7mc" secondAttribute="trailing" constant="4" id="M2o-Yl-8zT"/>
+                                    <constraint firstItem="Dvz-aq-2AQ" firstAttribute="leading" secondItem="OWu-aI-InU" secondAttribute="trailing" id="M2o-Yl-8zT"/>
                                     <constraint firstItem="Vrl-8A-7mc" firstAttribute="leading" secondItem="7DB-0E-cVf" secondAttribute="leading" id="OL0-ta-tLf"/>
                                     <constraint firstItem="YxI-Xz-G3e" firstAttribute="leading" secondItem="Dvz-aq-2AQ" secondAttribute="trailing" constant="4" id="VpQ-Ml-Her"/>
+                                    <constraint firstItem="OWu-aI-InU" firstAttribute="leading" secondItem="Vrl-8A-7mc" secondAttribute="trailing" id="mmq-s6-oIT"/>
                                     <constraint firstAttribute="bottom" secondItem="YxI-Xz-G3e" secondAttribute="bottom" constant="4" id="ntu-lQ-UVC"/>
+                                    <constraint firstItem="OWu-aI-InU" firstAttribute="top" secondItem="7DB-0E-cVf" secondAttribute="top" id="sT9-dA-fqK"/>
                                     <constraint firstAttribute="height" constant="50" id="xpn-kB-peo"/>
                                 </constraints>
                             </view>
@@ -112,14 +125,16 @@
                         <outlet property="detailChat_contentChat" destination="Dvz-aq-2AQ" id="csY-2u-QbN"/>
                         <outlet property="detailChat_indicator" destination="nAB-sV-qCg" id="vkq-BI-w3Y"/>
                         <outlet property="detailChat_list" destination="8q9-ZG-3Xq" id="dmM-ut-fTW"/>
+                        <outlet property="detailChat_location" destination="OWu-aI-InU" id="7xh-mu-mTl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCv-XN-yam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="71"/>
+            <point key="canvasLocation" x="932" y="70.614692653673174"/>
         </scene>
     </scenes>
     <resources>
+        <image name="location" catalog="system" width="128" height="115"/>
         <image name="paperclip" catalog="system" width="128" height="128"/>
     </resources>
 </document>

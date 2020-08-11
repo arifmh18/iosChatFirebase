@@ -37,6 +37,9 @@
                             <constraint firstAttribute="height" constant="28" id="vFf-wy-iKY"/>
                         </constraints>
                     </imageView>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zne-j9-TiH">
+                        <rect key="frame" x="16" y="8" width="199" height="28"/>
+                    </mapView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="fMI-5Q-wXR" secondAttribute="trailing" constant="105" id="4YS-UE-cJT"/>
@@ -46,8 +49,12 @@
                     <constraint firstAttribute="bottom" secondItem="R0H-o4-0oX" secondAttribute="bottom" constant="4" id="Ljy-6m-Tnw"/>
                     <constraint firstItem="fMI-5Q-wXR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ot5-16-nlH"/>
                     <constraint firstItem="tGR-yA-28Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="SOA-PY-TCZ"/>
+                    <constraint firstItem="zne-j9-TiH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="UbM-jq-iju"/>
+                    <constraint firstAttribute="trailing" secondItem="zne-j9-TiH" secondAttribute="trailing" constant="105" id="X7l-wf-7Pr"/>
                     <constraint firstAttribute="trailing" secondItem="tGR-yA-28Z" secondAttribute="trailing" constant="110" id="aMK-pn-GEZ"/>
+                    <constraint firstItem="zne-j9-TiH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="lfL-8L-ap1"/>
                     <constraint firstItem="fMI-5Q-wXR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nNH-nD-f14"/>
+                    <constraint firstAttribute="bottom" secondItem="zne-j9-TiH" secondAttribute="bottom" constant="8" id="nvZ-KI-ur1"/>
                     <constraint firstAttribute="trailing" secondItem="R0H-o4-0oX" secondAttribute="trailing" constant="100" id="oac-Gb-s83"/>
                     <constraint firstAttribute="bottom" secondItem="tGR-yA-28Z" secondAttribute="bottom" constant="12" id="xcb-oh-U2o"/>
                     <constraint firstItem="R0H-o4-0oX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="xeI-mM-YD6"/>
@@ -58,6 +65,7 @@
                 <outlet property="cellContent" destination="tGR-yA-28Z" id="07g-6H-Vp3"/>
                 <outlet property="cellHeightImage" destination="vFf-wy-iKY" id="ObP-K5-hg0"/>
                 <outlet property="cellImage" destination="fMI-5Q-wXR" id="lzv-Zg-tis"/>
+                <outlet property="cellMapkit" destination="zne-j9-TiH" id="Msm-KY-8u8"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="85.714285714285708"/>
         </tableViewCell>

@@ -36,26 +36,43 @@
                             <constraint firstAttribute="height" constant="28" id="6X5-3I-zOW"/>
                         </constraints>
                     </imageView>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nwA-ad-aEN">
+                        <rect key="frame" x="105" y="8" width="293" height="28"/>
+                    </mapView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-4H-F7d" customClass="GMSMapView">
+                        <rect key="frame" x="105" y="8" width="293" height="28"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ncj-4H-F7d" firstAttribute="top" secondItem="SPi-Gs-DUm" secondAttribute="top" constant="8" id="5R9-zv-VXl"/>
                     <constraint firstItem="JsL-Qq-XDD" firstAttribute="leading" secondItem="SPi-Gs-DUm" secondAttribute="leading" constant="105" id="BNV-3r-jln"/>
+                    <constraint firstAttribute="bottom" secondItem="ncj-4H-F7d" secondAttribute="bottom" constant="8" id="DYH-Lc-WZU"/>
                     <constraint firstItem="JsL-Qq-XDD" firstAttribute="top" secondItem="SPi-Gs-DUm" secondAttribute="top" constant="8" id="Dhe-xW-jlR"/>
+                    <constraint firstAttribute="bottom" secondItem="nwA-ad-aEN" secondAttribute="bottom" constant="8" id="JNy-sT-JWy"/>
                     <constraint firstItem="0op-o8-1Eb" firstAttribute="top" secondItem="SPi-Gs-DUm" secondAttribute="top" constant="4" id="Jgn-5a-9Nu"/>
+                    <constraint firstItem="nwA-ad-aEN" firstAttribute="leading" secondItem="SPi-Gs-DUm" secondAttribute="leading" constant="105" id="MAr-Ig-MML"/>
                     <constraint firstAttribute="trailing" secondItem="0op-o8-1Eb" secondAttribute="trailing" constant="10" id="WP5-dL-67g"/>
                     <constraint firstAttribute="bottom" secondItem="JsL-Qq-XDD" secondAttribute="bottom" constant="8" id="XZb-ft-KGj"/>
                     <constraint firstAttribute="bottom" secondItem="0op-o8-1Eb" secondAttribute="bottom" constant="4" id="YJI-ge-dKj"/>
                     <constraint firstItem="0op-o8-1Eb" firstAttribute="leading" secondItem="SPi-Gs-DUm" secondAttribute="leading" constant="100" id="d2F-tb-Xat"/>
+                    <constraint firstItem="nwA-ad-aEN" firstAttribute="top" secondItem="SPi-Gs-DUm" secondAttribute="top" constant="8" id="dIa-py-ofe"/>
                     <constraint firstItem="TxS-PU-oWD" firstAttribute="top" secondItem="SPi-Gs-DUm" secondAttribute="top" constant="12" id="da4-Va-yjc"/>
                     <constraint firstAttribute="bottom" secondItem="TxS-PU-oWD" secondAttribute="bottom" constant="12" id="dpa-vH-ZZb"/>
                     <constraint firstAttribute="trailing" secondItem="JsL-Qq-XDD" secondAttribute="trailing" constant="16" id="fsC-Wc-5l2"/>
                     <constraint firstAttribute="trailing" secondItem="TxS-PU-oWD" secondAttribute="trailing" constant="16" id="gRw-68-kkq"/>
+                    <constraint firstAttribute="trailing" secondItem="ncj-4H-F7d" secondAttribute="trailing" constant="16" id="gvJ-db-sp3"/>
+                    <constraint firstItem="ncj-4H-F7d" firstAttribute="leading" secondItem="SPi-Gs-DUm" secondAttribute="leading" constant="105" id="nyM-h0-kxQ"/>
                     <constraint firstItem="TxS-PU-oWD" firstAttribute="leading" secondItem="SPi-Gs-DUm" secondAttribute="leading" constant="110" id="uec-mt-CMF"/>
+                    <constraint firstAttribute="trailing" secondItem="nwA-ad-aEN" secondAttribute="trailing" constant="16" id="ykY-7F-VfF"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cellContent" destination="TxS-PU-oWD" id="79m-eT-El8"/>
                 <outlet property="cellHeightImage" destination="6X5-3I-zOW" id="2lH-db-dae"/>
                 <outlet property="cellImage" destination="JsL-Qq-XDD" id="GY6-mN-IIo"/>
+                <outlet property="cellMapView" destination="ncj-4H-F7d" id="x3I-RZ-wwF"/>
+                <outlet property="cellMapkit" destination="nwA-ad-aEN" id="0CB-VA-3LV"/>
             </connections>
             <point key="canvasLocation" x="118.84057971014494" y="69.642857142857139"/>
         </tableViewCell>

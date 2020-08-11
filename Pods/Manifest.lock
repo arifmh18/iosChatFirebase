@@ -55,6 +55,13 @@ PODS:
     - nanopb (~> 1.30905.0)
   - GoogleDataTransport (7.1.0):
     - nanopb (~> 1.30905.0)
+  - GoogleMaps (3.10.0):
+    - GoogleMaps/Maps (= 3.10.0)
+  - GoogleMaps/Base (3.10.0)
+  - GoogleMaps/Maps (3.10.0):
+    - GoogleMaps/Base
+  - GooglePlaces (3.10.0):
+    - GoogleMaps/Base (= 3.10.0)
   - GoogleUtilities/AppDelegateSwizzler (6.7.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -91,6 +98,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - GoogleMaps
+  - GooglePlaces
   - Kingfisher
 
 SPEC REPOS:
@@ -105,6 +114,8 @@ SPEC REPOS:
     - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleMaps
+    - GooglePlaces
     - GoogleUtilities
     - GTMSessionFetcher
     - Kingfisher
@@ -123,6 +134,8 @@ SPEC CHECKSUMS:
   FirebaseStorage: 3ef81ca5fa7817f85451ca09d516a34d2c7542a7
   GoogleAppMeasurement: 345d365fd105e6682bf5084783a5352a3db26820
   GoogleDataTransport: af0c79193dc59acd37630b4833d0dc6912ae6bd5
+  GoogleMaps: 8c080862ff2748ece9929471b30feb56a6c5079d
+  GooglePlaces: 9a6f5f3a0c88da2aa1bf7426a65d3e004f5e69a1
   GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
@@ -130,6 +143,6 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
 
-PODFILE CHECKSUM: 2e88aade3071a3f233359b98f72be92c61d34e77
+PODFILE CHECKSUM: f562d52979f41497f98571aa7676db26a9ffca22
 
 COCOAPODS: 1.9.3

@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import CoreLocation
+import GoogleMaps
 
 class DetailChatController: UIViewController {
 
@@ -17,6 +19,7 @@ class DetailChatController: UIViewController {
     @IBOutlet weak var detailChat_list: UITableView!
     @IBOutlet weak var detailChat_indicator: UIActivityIndicatorView!
     @IBOutlet weak var detailChat_attachment: UIButton!
+    @IBOutlet weak var detailChat_location: UIButton!
     
     var dataChat = [ChatModel]()
     var email = ""
@@ -25,6 +28,9 @@ class DetailChatController: UIViewController {
     var idRoom = ""
     var ref: DatabaseReference!
     var storageRef : StorageReference!
+    var locationManager = CLLocationManager()
+    var lat = 0.0
+    var lng = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +43,7 @@ class DetailChatController: UIViewController {
         // Do any additional setup after loading the view.
         let cell = UINib(nibName: "ChatTableCell", bundle: nil)
         let cellSend = UINib(nibName: "ChatTableSendCell", bundle: nil)
+        GMSServices.provideAPIKey("AIzaSyCI6L1ff2BdRRiO_-ghFiYKX-58iOGD2Bk")
         
         ref = Database.database().reference()
         storageRef = Storage.storage().reference()
@@ -48,6 +55,15 @@ class DetailChatController: UIViewController {
         detailChat_list.dataSource = self
 
         getData()
+        
+        locationManager.requestWhenInUseAuthorization()
+        var currentLoc: CLLocation!
+        if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+        CLLocationManager.authorizationStatus() == .authorizedAlways) {
+           currentLoc = locationManager.location
+           lat = currentLoc.coordinate.latitude
+           lng = currentLoc.coordinate.longitude
+        }
     }
     
     @objc func getImage(){
@@ -149,6 +165,18 @@ class DetailChatController: UIViewController {
         ref.child("Percakapan/\(self.idRoom)").childByAutoId().setValue(postObject)
         detailChat_contentChat.text = ""
     }
+    
+    @IBAction func sendLocation(_ sender: Any) {
+        let email = Auth.auth().currentUser?.email ?? ""
+        let postObject = [
+            "email":email,
+            "text": "\(lat) \(lng)",
+            "type":"location",
+            "timestamp": [".sv":"timestamp"]
+            ] as [String:Any]
+        ref.child("Percakapan/\(self.idRoom)").childByAutoId().setValue(postObject)
+    }
+    
 }
 
 extension DetailChatController : UITableViewDelegate, UITableViewDataSource{
